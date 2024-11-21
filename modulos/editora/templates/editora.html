@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="adicionar">
+        <a href="/editora/add">Adicionar</a>
+    </div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </tr>
+        {% for e in editora %}
+        <tr>
+            <td>{{a.nome}}</td>
+            <td>{{a.cidade}}</td>
+            <td><a href="/editoras/edit/{{e.id_editora}}">[E]</a></td>
+            <td><a href="/editoras/remove/{{e.id_editora}}">[X]</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
